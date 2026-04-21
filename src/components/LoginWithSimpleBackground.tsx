@@ -11,7 +11,7 @@ interface LoginResponse {
   };
 }
 
-const Login = () => {
+const LoginWithSimpleBackground = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -51,23 +51,34 @@ const Login = () => {
       display: 'flex', 
       alignItems: 'center', 
       justifyContent: 'center',
-      background: `linear-gradient(135deg, rgba(220, 53, 69, 0.8), rgba(200, 35, 51, 0.9)), 
-                  url('/images/background-login.jpg')`,
-      backgroundSize: 'cover',
-      backgroundPosition: 'center',
-      backgroundRepeat: 'no-repeat',
       position: 'relative',
       overflow: 'hidden'
     }}>
-      {/* Overlay pour améliorer la lisibilité */}
+      {/* Image d'arrière-plan simple */}
+      <div
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          backgroundImage: 'url(/images/background-login.jpg)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          zIndex: 0
+        }}
+      />
+      
+      {/* Overlay dégradé pour améliorer la lisibilité */}
       <div style={{
         position: 'absolute',
         top: 0,
         left: 0,
         right: 0,
         bottom: 0,
-        background: 'linear-gradient(135deg, rgba(220, 53, 69, 0.7), rgba(200, 35, 51, 0.8))',
-        zIndex: 0
+        background: 'linear-gradient(135deg, rgba(220, 53, 69, 0.6), rgba(200, 35, 51, 0.7))',
+        zIndex: 1
       }} />
       
       {/* Logo/Emblème de l'académie */}
@@ -76,13 +87,13 @@ const Login = () => {
         top: '2rem',
         left: '50%',
         transform: 'translateX(-50%)',
-        zIndex: 1,
+        zIndex: 2,
         textAlign: 'center'
       }}>
         <div style={{
           width: '80px',
           height: '80px',
-          backgroundColor: '#dc3545',
+          backgroundColor: 'rgba(255, 255, 255, 0.2)',
           borderRadius: '50%',
           display: 'flex',
           alignItems: 'center',
@@ -99,26 +110,27 @@ const Login = () => {
           }}>HT</span>
         </div>
         <h1 style={{
-          color: '#dc3545',
+          color: 'white',
           margin: 0,
           fontSize: '1.5rem',
           fontWeight: 'bold',
-          textShadow: '2px 2px 4px rgba(0,0,0,0.1)'
+          textShadow: '2px 2px 4px rgba(0,0,0,0.3)'
         }}>
           Académie Handball Tebourba
         </h1>
       </div>
 
       <div style={{
-        backgroundColor: 'white',
+        backgroundColor: 'rgba(255, 255, 255, 0.95)',
+        backdropFilter: 'blur(20px)',
         padding: '3rem',
         borderRadius: '16px',
-        boxShadow: '0 20px 40px rgba(0, 0, 0, 0.1)',
+        boxShadow: '0 20px 40px rgba(0, 0, 0, 0.2)',
         width: '100%',
         maxWidth: '450px',
         position: 'relative',
         zIndex: 2,
-        border: '1px solid rgba(220, 53, 69, 0.2)'
+        border: '1px solid rgba(255, 255, 255, 0.3)'
       }}>
         {/* Icône handball */}
         <div style={{
@@ -136,7 +148,7 @@ const Login = () => {
             marginBottom: '1rem',
             boxShadow: '0 4px 12px rgba(220, 53, 69, 0.3)'
           }}>
-            <span style={{ color: 'white', fontSize: '1.5rem' }}>🏐</span>
+            <span style={{ color: 'white', fontSize: '1.5rem' }}>??</span>
           </div>
           <h2 style={{ 
             margin: 0,
@@ -178,7 +190,8 @@ const Login = () => {
                 borderRadius: '8px',
                 fontSize: '1rem',
                 transition: 'all 0.3s ease',
-                outline: 'none'
+                outline: 'none',
+                backgroundColor: 'rgba(255, 255, 255, 0.9)'
               }}
               onFocus={(e) => {
                 e.target.style.borderColor = '#dc3545';
@@ -214,7 +227,8 @@ const Login = () => {
                 borderRadius: '8px',
                 fontSize: '1rem',
                 transition: 'all 0.3s ease',
-                outline: 'none'
+                outline: 'none',
+                backgroundColor: 'rgba(255, 255, 255, 0.9)'
               }}
               onFocus={(e) => {
                 e.target.style.borderColor = '#dc3545';
@@ -241,7 +255,7 @@ const Login = () => {
               alignItems: 'center',
               gap: '0.5rem'
             }}>
-              <span>⚠️</span>
+              <span>??</span>
               {error}
             </div>
           )}
@@ -284,19 +298,24 @@ const Login = () => {
         <div style={{ 
           marginTop: '2rem', 
           padding: '1.5rem', 
-          background: 'linear-gradient(135deg, #f8f9fa, #e9ecef)', 
+          background: 'linear-gradient(135deg, rgba(248, 249, 250, 0.9), rgba(233, 236, 239, 0.9))', 
           borderRadius: '12px',
           fontSize: '0.85rem',
           color: '#495057',
-          border: '1px solid #dee2e6'
+          border: '1px solid rgba(222, 226, 230, 0.5)'
         }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem' }}>
-            <span style={{ color: '#dc3545' }}>🔓</span>
+            <span style={{ color: '#dc3545' }}>??</span>
             <strong style={{ color: '#dc3545' }}>Accès Administrateur:</strong>
           </div>
           <div style={{ marginLeft: '1.5rem', lineHeight: '1.5' }}>
             <div><strong>Email:</strong> admin@academie.com</div>
             <div><strong>Mot de passe:</strong> admin123</div>
+          </div>
+          <div style={{ marginTop: '1rem', padding: '1rem', backgroundColor: 'rgba(220, 53, 69, 0.1)', borderRadius: '8px', fontSize: '0.8rem' }}>
+            <strong>?? Pour l'image d'arrière-plan:</strong><br/>
+            Placez votre image dans <code>frontend/public/images/</code><br/>
+            Nommez-la <code>background-login.jpg</code>
           </div>
         </div>
       </div>
@@ -304,4 +323,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default LoginWithSimpleBackground;

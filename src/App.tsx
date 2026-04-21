@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import Login from './components/Login';
+import LoginResponsive from './components/LoginResponsive';
 import AdminDashboard from './components/AdminDashboard';
 import ParentDashboard from './components/ParentDashboard';
 import './App.css';
@@ -42,7 +42,7 @@ function App() {
             isAuthenticated ? (
               <Navigate to={userRole === 'ADMIN' ? '/admin-dashboard' : '/parent-dashboard'} replace />
             ) : (
-              <Login />
+              <LoginResponsive />
             )
           } 
         />
