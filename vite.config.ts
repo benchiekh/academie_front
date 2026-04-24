@@ -10,7 +10,8 @@ export default defineConfig({
   ],
   preview: {
     port: 3000,
-    host: '0.0.0.0'
+    host: '0.0.0.0',
+    allowedHosts: ['academie-front.onrender.com', 'localhost', '0.0.0.0']
   },
   server: {
     port: 3000,
