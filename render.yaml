@@ -1,12 +1,10 @@
 services:
-  # Frontend React App
+  # Frontend React App - Static Site
   - type: web
     name: academie-frontend
-    env: node
+    env: static
     plan: free
     buildCommand: npm install && npm run build
-    startCommand: npm run preview
-    healthCheckPath: /
     staticPublishPath: dist
     
     envVars:
