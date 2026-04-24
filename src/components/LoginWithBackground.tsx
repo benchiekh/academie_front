@@ -52,7 +52,7 @@ const LoginWithBackground = () => {
     };
     img.src = backgroundImage;
   }, [backgroundImage]);
-  const [imageLoaded, setImageLoaded] = useState(false);
+  const [imageLoaded] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

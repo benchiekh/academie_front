@@ -39,7 +39,7 @@ const LoginWithDebugBackground = () => {
         '/images/handball-bg.jpg'
       ];
       
-      alternatives.forEach((alt, index) => {
+      alternatives.forEach((alt) => {
         const img = new Image();
         img.onload = () => {
           setImageStatus(`Image trouvée: ${alt}`);

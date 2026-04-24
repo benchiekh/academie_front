@@ -17,8 +17,7 @@ const LoginResponsive = () => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
-  const [imageStatus, setImageStatus] = useState<string>('Vérification...');
-  const [screenSize, setScreenSize] = useState<'mobile-small' | 'mobile' | 'tablet' | 'desktop' | 'desktop-large'>('desktop');
+    const [screenSize, setScreenSize] = useState<'mobile-small' | 'mobile' | 'tablet' | 'desktop' | 'desktop-large'>('desktop');
 
   useEffect(() => {
     // Détection de la taille d'écran avec plus de breakpoints
@@ -40,20 +39,7 @@ const LoginResponsive = () => {
     updateScreenSize();
     window.addEventListener('resize', updateScreenSize);
 
-    // Vérifier si l'image existe
-    const checkImage = () => {
-      const img = new Image();
-      img.onload = () => {
-        setImageStatus('Image trouvée et chargée !');
-      };
-      img.onerror = () => {
-        setImageStatus('Image NON trouvée - Vérifiez le chemin et le nom');
-      };
-      img.src = '/background-login.jpg';
-    };
     
-    checkImage();
-
     return () => window.removeEventListener('resize', updateScreenSize);
   }, []);
 
