@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { API_ENDPOINTS } from '../config/api';
 
 interface LoginResponse {
   access_token: string;
@@ -62,7 +63,7 @@ const LoginResponsive = () => {
     setLoading(true);
 
     try {
-      const response = await axios.post<LoginResponse>('http://localhost:3000/auth/login', {
+      const response = await axios.post<LoginResponse>(API_ENDPOINTS.login, {
         email,
         password,
       });

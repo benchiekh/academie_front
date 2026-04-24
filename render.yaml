@@ -1,0 +1,17 @@
+services:
+  # Frontend React App
+  - type: web
+    name: academie-frontend
+    env: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm run preview
+    healthCheckPath: /
+    staticPublishPath: dist
+    
+    envVars:
+      - key: NODE_ENV
+        value: production
+      # URL du backend déployé
+      - key: VITE_API_URL
+        value: https://academie-back.onrender.com
