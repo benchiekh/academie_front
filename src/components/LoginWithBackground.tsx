@@ -352,7 +352,7 @@ const LoginWithBackground = () => {
         <div style={{ 
           marginTop: '2rem', 
           padding: '1.5rem', 
-          background: 'linear-gradient(135deg, rgba(248, 249, 250, 0.9), rgba(233, 236, 239, 0.9)), 
+          background: 'linear-gradient(135deg, rgba(248, 249, 250, 0.9), rgba(233, 236, 239, 0.9))', 
           borderRadius: '12px',
           fontSize: '0.85rem',
           color: '#495057',
