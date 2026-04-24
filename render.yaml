@@ -1,11 +1,12 @@
 services:
-  # Frontend React App - Static Site
+  # Frontend React App - Express Server
   - type: web
     name: academie-frontend
-    env: static
+    env: node
     plan: free
     buildCommand: npm install && npm run build
-    staticPublishPath: dist
+    startCommand: node server.js
+    healthCheckPath: /
     
     envVars:
       - key: NODE_ENV
