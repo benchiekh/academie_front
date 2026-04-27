@@ -1,5 +1,6 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import API_BASE_URL from '../config/api';
 
 interface User {
   id: number;
@@ -29,7 +30,7 @@ const AdminDashboard = () => {
   const fetchParents = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get('http://localhost:3000/auth/parents', {
+      const response = await axios.get(`${API_BASE_URL}/auth/parents`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       console.log('📥 Données reçues du backend:', response.data);
@@ -46,7 +47,7 @@ const AdminDashboard = () => {
     e.preventDefault();
     try {
       const token = localStorage.getItem('token');
-      await axios.post('http://localhost:3000/auth/create-parent', newParent, {
+      await axios.post(`${API_BASE_URL}/auth/create-parent`, newParent, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setMessage('Compte parent créé avec succès');
