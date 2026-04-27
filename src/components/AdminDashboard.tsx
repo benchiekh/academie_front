@@ -15,6 +15,9 @@ const AdminDashboard = () => {
   const [message, setMessage] = useState('');
   const [user, setUser] = useState<any>(null);
 
+  // Debug: suivre l'état des parents
+  console.log('🔄 Rendu AdminDashboard - État actuel des parents:', parents);
+
   useEffect(() => {
     const userData = localStorage.getItem('user');
     if (userData) {
@@ -29,9 +32,13 @@ const AdminDashboard = () => {
       const response = await axios.get('http://localhost:3000/auth/parents', {
         headers: { Authorization: `Bearer ${token}` }
       });
-      setParents(response.data);
+      console.log('📥 Données reçues du backend:', response.data);
+      console.log('📋 Liste des parents:', response.data.parents);
+      setParents(response.data.parents || []);
+      console.log('✅ État parents mis à jour:', response.data.parents || []);
     } catch (error) {
       console.error('Erreur lors de la récupération des parents:', error);
+      setParents([]); // Initialiser avec un tableau vide en cas d'erreur
     }
   };
 
