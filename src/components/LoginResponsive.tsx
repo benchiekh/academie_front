@@ -473,8 +473,7 @@ const LoginResponsive = () => {
                   e.target.style.boxShadow = '0 2px 6px rgba(0, 0, 0, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.7)';
                   e.target.style.transform = 'translateY(0)';
                 }}
-                placeholder="admin@academie.com"
-              />
+               />
             </div>
           </div>
 
@@ -526,8 +525,7 @@ const LoginResponsive = () => {
                   e.target.style.boxShadow = '0 2px 6px rgba(0, 0, 0, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.7)';
                   e.target.style.transform = 'translateY(0)';
                 }}
-                placeholder="admin123"
-              />
+               />
             </div>
           </div>
 
