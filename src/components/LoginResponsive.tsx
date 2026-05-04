@@ -48,24 +48,42 @@ const LoginResponsive = () => {
     setError('');
     setLoading(true);
 
+    // Validation minimale
+    if (!email || !password) {
+      setError('Veuillez remplir tous les champs');
+      setLoading(false);
+      return;
+    }
+
+    if (!email.includes('@') || email.length < 5) {
+      setError('Veuillez entrer un email valide');
+      setLoading(false);
+      return;
+    }
+
+    if (password.length < 3) {
+      setError('Le mot de passe doit contenir au moins 3 caractères');
+      setLoading(false);
+      return;
+    }
+
     try {
       const response = await axios.post<LoginResponse>(API_ENDPOINTS.login, {
         email,
         password,
       });
 
-      const { access_token, user } = response.data;
-      
-      localStorage.setItem('token', access_token);
-      localStorage.setItem('user', JSON.stringify(user));
+      // Stocker le token et l'utilisateur
+      localStorage.setItem('token', response.data.access_token);
+      localStorage.setItem('user', JSON.stringify(response.data.user));
 
-      if (user.role === 'ADMIN') {
+      if (response.data.user.role === 'ADMIN') {
         window.location.href = '/admin-dashboard';
       } else {
         window.location.href = '/parent-dashboard';
       }
     } catch (err: any) {
-      setError(err.response?.data?.message || 'Erreur de connexion');
+      setError(err.response?.data?.message || 'Identifiants incorrects');
     } finally {
       setLoading(false);
     }
@@ -651,7 +669,7 @@ const LoginResponsive = () => {
                        screenSize === 'mobile' ? '0.7rem' : 
                        screenSize === 'tablet' ? '0.75rem' : '0.8rem',
               letterSpacing: '0.01em'
-            }}>ihe ben chiekh ahmed</span>
+            }}>iheb ben chiekh ahmed</span>
           </div>
           <div style={{ 
             fontSize: screenSize === 'mobile-small' ? '0.7rem' : 
