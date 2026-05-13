@@ -13,4 +13,4 @@ services:
         value: production
       # URL du backend déployé
       - key: VITE_API_URL
-        value: https://academie-back.onrender.com
+        value: https://academie-back-1.onrender.com
